@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const PageButton = ({ totalCount, limit, setPage }) => {
   const [btnIndex, setBtnIndex] = useState(0);
+  const [btnNum, setBtnNum] = useState(1);
 
   const btnArr = [];
   let arr = [];
@@ -15,8 +16,8 @@ const PageButton = ({ totalCount, limit, setPage }) => {
   }
 
   const handleClick = (e) => {
-    const num = e.target.textContent;
-    setPage(num);
+    setBtnNum(e.target.textContent);
+    setPage(e.target.textContent);
   };
 
   return (
@@ -29,13 +30,19 @@ const PageButton = ({ totalCount, limit, setPage }) => {
       >
         {"<"}
       </button>
+
       {btnArr[btnIndex]?.map((num, idx) => {
         return (
-          <button key={idx} onClick={handleClick}>
+          <div
+            key={idx}
+            onClick={handleClick}
+            className={num == btnNum ? "clickedBtn" : ""}
+          >
             {num}
-          </button>
+          </div>
         );
       })}
+
       <button
         onClick={() => {
           setBtnIndex(btnIndex + 1);

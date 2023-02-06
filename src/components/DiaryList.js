@@ -83,7 +83,7 @@ const DiaryList = ({ diaryList }) => {
       </div>
 
       {getProcessedList()[0]
-        .slice((page - 1) * limit, (page - 1) * limit + limit)
+        .slice((page - 1) * limit, page * limit)
         .map((diary) => {
           return <DiaryItem key={diary._id} {...diary} />;
         })}

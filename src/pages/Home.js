@@ -9,8 +9,13 @@ const Home = () => {
 
   const [data, setData] = useState([]);
   const [curDate, setCurDate] = useState(new Date());
+  const [inputToggle, setInputToggle] = useState(false);
 
   const headText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`;
+
+  const handleToggle = () => {
+    setInputToggle(!inputToggle);
+  };
 
   useEffect(() => {
     const titleElement = document.getElementsByTagName("title")[0];
@@ -54,10 +59,22 @@ const Home = () => {
   return (
     <div className="Home">
       <MyHeader
-        headText={headText}
+        headText={
+          <MyButton type={"header"} text={headText} onClick={handleToggle} />
+        }
         leftChild={<MyButton text={"<"} onClick={decreaseMonth} />}
         rightChild={<MyButton text={">"} onClick={increaseMonth} />}
       />
+      <div className="input_wrap">
+        <input
+          type={"date"}
+          className={inputToggle ? "show_input" : "hide_input"}
+          onChange={(e) => {
+            setCurDate(new Date(e.target.value));
+          }}
+        />
+      </div>
+
       <DiaryList diaryList={data} />
     </div>
   );

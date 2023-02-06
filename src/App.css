@@ -67,15 +67,26 @@ body {
   color: white;
 }
 
-/* HEADER */
+.MyButton_header {
+  background-color: white;
+  font-size: 25px;
+}
+
+/* Header */
 
 header {
   padding-top: 20px;
   padding-bottom: 20px;
-
   display: flex;
   align-items: center;
   border-bottom: 1px solid #e2e2e2;
+  position: relative;
+}
+header .input_wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 80%);
 }
 
 header > div {
@@ -143,16 +154,30 @@ header button {
   justify-content: center;
 }
 
-.PageButton button {
+.PageButton div {
   padding: 10px;
 
-  background-color: white;
   cursor: pointer;
   border: none;
   border-radius: 5px;
 
   font-family: "Nanum pen Script";
   font-size: 20px;
+}
+.PageButton button {
+  padding: 10px;
+
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+
+  font-family: "Nanum pen Script";
+  font-size: 20px;
+}
+
+.clickedBtn {
+  background-color: #ececec;
 }
 
 /* DiaryItem */
@@ -400,4 +425,24 @@ header button {
   font-family: "Yeon Sung";
   font-weight: 400;
   line-height: 2.5;
+}
+
+/* Home */
+.Home {
+  position: relative;
+}
+
+.Home .input_wrap {
+  position: absolute;
+  top: 65px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.show_input {
+  display: block;
+}
+
+.hide_input {
+  display: none;
 }
